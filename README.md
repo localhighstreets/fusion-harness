@@ -1,5 +1,7 @@
 # fusion-harness
 
+LocalHighStreets copy of the Pi extension project attributed to IndyDevDan. Model-stack examples are checked-in configuration choices, not guarantees of provider availability. This repository is separate from the deployed LHS agent estate.
+
 > **Fuse 2–5 frontier models instead of racing them. AND, not OR.**
 
 📺 V2 walkthrough: **[Understand how to use the Pi Coding Agent to COMBINE COMPUTE not SELECT COMPUTE](https://youtu.be/rqZHR-hRllI)**
@@ -16,7 +18,7 @@
 
 **Fuse 2–5 frontier models instead of racing them. AND, not OR.**
 
-A composable Pi extension with one configured ARCHITECT, one primary/Main BUILDER (the raw-chat host), and up to three secondary builders. It provides N-way opinions, fusion, debate, coordinated implementation, direct one-agent routing, model selection, and gate-first validation without taking over Pi's footer.
+A composable Pi extension with one configured ARCHITECT, one primary/Main BUILDER (the raw-chat host), and up to three secondary builders. It provides N-way opinions, fusion, debate, coordinated implementation, direct one-agent routing, model selection, and gate-first validation with a custom optional model bar and footer behaviour described below.
 
 ---
 
@@ -40,7 +42,7 @@ npm install -g @earendil-works/pi-coding-agent   # the pi coding agent
 brew install just jq uv                          # command runner + gate tooling
 npm install                                      # repo deps (yaml parser)
 cp .env.example .env                             # then fill ANTHROPIC/GEMINI/FIREWORKS/OPENAI/OPENROUTER_API_KEY
-npm test                                         # 34 deterministic tests, zero paid calls
+npm test                                         # runs the Bun test suite declared in package.json
 ```
 
 Note: pi reads `GEMINI_API_KEY` for the google provider (not `GOOGLE_GENERATIVE_AI_API_KEY`).
@@ -234,7 +236,7 @@ just fh-workhorse     # legacy two-slot pair (cheap)
 just fh-sota          # legacy two-slot pair (frontier)
 ```
 
-Stack YAMLs live in `.pi/fusion-harness/` (and `~/.pi/fusion-harness/` for launching from anywhere). A clean demo workspace with the same recipes, scraped DuckDB v2.0 docs in `ai_docs/`, and self-contained demo prompts lives at [`../fusion-harness-v2-playground`](../fusion-harness-v2-playground).
+Stack YAMLs checked into this repository live in [.pi/fusion-harness](.pi/fusion-harness). Any global configuration or separate playground checkout must be provisioned independently. [ai_docs](ai_docs) and [prompts](prompts) contain the local reference and demonstration assets.
 
 
 ## Runtime files
@@ -284,6 +286,10 @@ npm run test:fusion-harness     # deterministic unit/contract tests
 Live validation prompts are checked in under `prompts/duckdb/`, ordered simple to complex and centered on the [DuckDB v2.0 preview](https://duckdb.org/2026/08/17/duckdb-20-highlights).
 
 ---
+
+## Review status
+
+Root scripts and repository paths were reviewed on 21 October 2026. The test script requires Bun. This documentation review did not run the suite, launch Pi or verify model-provider access. Example outputs are not current benchmark or deployment evidence.
 
 ## License
 
